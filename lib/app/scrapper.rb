@@ -70,4 +70,12 @@ class Scrapper
 
   end
 
+  def save_as_JSON(data)
+    File.open("../db/emails.json", "w") do |f|
+      f.write(data)
+    end
+  end
+
+  
+
 end
