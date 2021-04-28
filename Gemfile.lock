@@ -8,6 +8,7 @@ GEM
     method_source (1.0.0)
     nokogiri (1.11.3-arm64-darwin)
       racc (~> 1.4)
+    open-uri (0.1.0)
     parallel (1.20.1)
     parser (3.0.1.0)
       ast (~> 2.4.1)
@@ -51,6 +52,7 @@ PLATFORMS
 DEPENDENCIES
   json
   nokogiri
+  open-uri
   pry
   rspec
   rubocop
