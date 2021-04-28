@@ -80,6 +80,12 @@ class Scrapper
 
   end
 
+  def save_as_csv(data)
+    File.open("../db/emails.csv", "w") do |f|
+      f.write(data)
+    end
+  end
+
   
 
 end
