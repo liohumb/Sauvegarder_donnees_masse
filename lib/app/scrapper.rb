@@ -5,7 +5,7 @@ class Scrapper
   def get_townhall_email
 
     email_town = []
-    doc = Nokogiri::HTML(open("https://www.annuaire-des-mairies.com/95/avernes.html"))
+    doc = Nokogiri::HTML(URI.open("https://www.annuaire-des-mairies.com/95/avernes.html"))
     doc.xpath('/html/body/div/main/section[2]/div/table/tbody/tr[4]/td[2]').each do |node|
       email_town << node.text
     end
@@ -17,7 +17,7 @@ class Scrapper
   def get_townhall_urls
 
     url_town = []
-    doc = Nokogiri::HTML(open("http://annuaire-des-mairies.com/val-d-oise.html"))
+    doc = Nokogiri::HTML(URI.open("http://annuaire-des-mairies.com/val-d-oise.html"))
     doc.xpath('//a[@class = "lientxt"]').each do |node|
       url_town << node["href"]
     end
@@ -30,7 +30,7 @@ class Scrapper
 
     email_all = []
     url_town.each do |town|
-      doc = Nokogiri::HTML(open("http://annuaire-des-mairies.com/#{town}"))
+      doc = Nokogiri::HTML(URI.open("http://annuaire-des-mairies.com/#{town}"))
       doc.xpath('/html/body/div/main/section[2]/div/table/tbody/tr[4]/td[2]').each do |node|
         email_all << node.text
 
@@ -44,7 +44,7 @@ class Scrapper
 
   def get_town_name
     name_town = []
-    doc = Nokogiri::HTML(open("http://annuaire-des-mairies.com/val-d-oise.html"))
+    doc = Nokogiri::HTML(URI.open("http://annuaire-des-mairies.com/val-d-oise.html"))
     doc.xpath('//a[@class = "lientxt"]').each do |node|
       name_town << node.text
     end
@@ -71,13 +71,13 @@ class Scrapper
   end
 
   def save_as_JSON(data)
-    File.open("../db/emails.json", "w") do |f|
+    File.open("db/emails.json") do |f|
       f.write(data)
     end
   end
 
   def save_as_csv(data)
-    File.open("../db/emails.csv", "w") do |f|
+    File.open("db/emails.csv") do |f|
       f.write(data)
     end
   end
