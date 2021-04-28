@@ -76,6 +76,10 @@ class Scrapper
     end
   end
 
+  def save_as_spreadsheet(data)
+
+  end
+
   
 
 end
