@@ -76,16 +76,17 @@ class Scrapper
     end
   end
 
-  def save_as_spreadsheet(data)
-
-  end
-
   def save_as_csv(data)
     File.open("../db/emails.csv", "w") do |f|
       f.write(data)
     end
   end
 
-  
+  def perform
+    url_town = get_townhall_urls
+    email_all = get_all_townhall_email(url_town)
+    name_town = get_town_name
+    create_array_town(name_town, email_all)
+  end
 
 end
